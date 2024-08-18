@@ -20,7 +20,7 @@ const { join } = require("path")
 
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://www.typescriptlang.org/`,
+    siteUrl: `https://www.doc.tslang.org/`,
   },
   flags: {
     DEV_SSR: false,
@@ -126,7 +126,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-i18n",
       options: {
-        langKeyDefault: "en",
+        langKeyDefault: "zh",
         useLangKeyLayout: true,
       },
     },
@@ -175,5 +175,26 @@ module.exports = {
       },
     },
     "gatsby-plugin-client-side-redirect",
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "G-SKZSS6G8YF", // Google Analytics / GA
+        ],
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: true,
+          // Setting this parameter is also optional
+          // respectDNT: true,
+          // Avoids sending pageview hits from custom paths
+          // exclude: ["/preview/**", "/do-not-track/me/too/"],
+          // Defaults to https://www.googletagmanager.com
+          // origin: "YOUR_SELF_HOSTED_ORIGIN",
+          // Delays processing pageview events on route update (in milliseconds)
+          delayOnRouteUpdate: 0,
+        },
+      }
+      
+    }
   ],
 }
